@@ -28,8 +28,30 @@
 						"type": "DatasetReference"
 					}
 				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "start_dt",
+					"value": {
+						"value": "@formatDateTime(utcNow(),'yyyy-MM-ddThh-mm-ss')",
+						"type": "Expression"
+					}
+				}
 			}
 		],
+		"variables": {
+			"start_dt": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }

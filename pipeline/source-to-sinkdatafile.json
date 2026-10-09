@@ -30,12 +30,34 @@
 					},
 					"firstRowOnly": false
 				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "test",
+					"value": {
+						"value": "@formatDateTime(utcNow(),'yyyy-MM-ddThh:mm:ss')",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"parameters": {
 			"table_id": {
 				"type": "string",
 				"defaultValue": "1"
+			}
+		},
+		"variables": {
+			"test": {
+				"type": "String"
 			}
 		},
 		"annotations": []

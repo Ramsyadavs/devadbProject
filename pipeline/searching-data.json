@@ -114,7 +114,7 @@
 						"parameters": {
 							"container": "landing",
 							"folder": {
-								"value": "@concat(activity('reading-data').output.source_system,\n        '/',\n       activity('reading-data').output.value.source_table_name,\n        '/',\n        variables('start_dt')\n\n\n\n)",
+								"value": " @concat(\n    activity('reading-data').output.value[0].source_system,\n    '/',\n    activity('reading-data').output.value[0].source_table_name,\n    '/',\n    variables('start_dt')\n)",
 								"type": "Expression"
 							}
 						}

@@ -16,15 +16,16 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "PostgreSqlV2Source",
-						"query": {
-							"value": "select * from hospitals where hospital_id=1",
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "select*from ctrl.table_config where table_id=1;",
 							"type": "Expression"
 						},
-						"queryTimeout": "02:00:00"
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
 					},
 					"dataset": {
-						"referenceName": "ds_PostgreSqlTable",
+						"referenceName": "ds_AzureSqlTable",
 						"type": "DatasetReference"
 					}
 				}
@@ -32,6 +33,8 @@
 			{
 				"name": "Set variable1",
 				"type": "SetVariable",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"secureOutput": false,
@@ -49,6 +52,8 @@
 			{
 				"name": "Copy data1",
 				"type": "Copy",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "reading-data",
@@ -72,8 +77,19 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
 					"enableStaging": false
-				}
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_AzureSqlTable",
+						"type": "DatasetReference"
+					}
+				]
 			}
 		],
 		"variables": {
